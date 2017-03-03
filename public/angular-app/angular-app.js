@@ -1,0 +1,9 @@
+angular.module('NodeApp', 
+	[
+		'appRoutes',
+		'uiCtrl',
+		'mainCtrl',
+	 	'loginServices',
+	 	'ngMdIcons'
+	]
+);
