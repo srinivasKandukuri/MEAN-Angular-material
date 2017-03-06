@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('appRoutes', ['ngRoute', 'loginServices'])
+angular.module('appRoutes', ['ngRoute'])
 
 .config(function($routeProvider,$locationProvider, $httpProvider) {
            
@@ -17,14 +17,18 @@ angular.module('appRoutes', ['ngRoute', 'loginServices'])
                      loggedin: checkLoggedin
                 },
                 templateUrl : 'views/login.html',
-                controller : 'loginCtrl'
+                controller  : 'loginCtrl'
+            })
+            .when('/signup', {
+                templateUrl :'views/signup.html',
+                controller  : 'signupCtrl'
             })
             .when('/profile', {
                 resolve: {
                      loggedin: checkLoggedin
                 },
                 templateUrl : 'views/profile.html',
-                controller : 'profileCtrl'
+                controller  : 'profileCtrl'
             })
             .otherwise({
                 redirectTo: '/'

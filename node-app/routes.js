@@ -1,7 +1,6 @@
 // sample api route
 var db = require('../config/db');
-var users = require('./controllers/users');
-var LoginServices = require('./controllers/loginServices');
+var userController = require('./controllers/userController');
 
 
 
@@ -13,7 +12,11 @@ module.exports = function(app, api, passport) {
         res.render('index', { title: 'Node-app' });
     });
     
-    api.get('/api/users', users.render);
+    api.get('/api/users', userController.getUserDetails);
+
+    api.get('/api/signup', function(req, res){
+
+    });
 
     api.get('/api/logout', function(req,res){
         req.session.destroy(function (err) {

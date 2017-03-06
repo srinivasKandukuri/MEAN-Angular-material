@@ -1,0 +1,59 @@
+ <div ng-include="'/views/includes/toolbar.html'"></div>
+ 
+  <md-content ng-controller="signupCtrl" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
+      <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+
+        <p class="successMessage">{{message}}</p>
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <h2><span>Registration Form</span></h2>
+          </div>
+        </md-toolbar>
+        <md-card-content>
+          <form name="regForm">
+
+             <md-input-container flex="50">
+              <label>First Name</label>
+              <input required name="firstName" ng-model="userInfo.firstName">
+              <div ng-messages="regForm.firstName.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+               <md-input-container flex="50">
+              <label>Last Name</label>
+              <input required name="lastName" ng-model="userInfo.lastName">
+              <div ng-messages="regForm.lastName.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block">
+              <label>Email</label>
+              <input required type="email" name="userEmail" ng-model="userInfo.userEmail"
+                     minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
+
+              <div ng-messages="regForm.userEmail.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                  Your email must be between 5 and 100 characters long and look like an e-mail address.
+                </div>
+              </div>
+            </md-input-container>
+
+
+
+            <md-input-container class="md-block">
+             <label>Password</label>
+              <input type="password" name="password" ng-model="userInfo.password" password" required maxlength="16" minlength="6" />
+              <div ng-messages="regForm.password.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                  Your password must be between 6 and 16 characters .
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-button ng-disabled="!regForm.$valid" ng-click="submit(regForm)" class="md-raised md-primary">&nbsp SignUp &nbsp</md-button>
+          </form>
+        </md-card-content>
+      </md-card>
+    </md-content>
+    <!-- Angular Material Dependencies-->

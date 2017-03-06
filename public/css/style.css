@@ -1,5 +1,5 @@
 html, body {
-  background: rgba(206, 206, 206, 0.14);
+ /*background: rgba(206, 206, 206, 0.14);*/
   color: #fff;
   font-family: sans-serif;
 }
@@ -17,7 +17,11 @@ html, body {
 $gray: #eee;
 
 md-content.md-default-theme {
-  background-color: $gray;
+  /*background-color: $gray;*/
+}
+
+md-content.md-default-theme, md-content {
+  background: transparent;
 }
 md-card {
   background-color: #fff;
@@ -61,4 +65,9 @@ md-sidenav {
   text-align:center;
   padding:15px;
   font-size: 15px;
+}
+
+.successMessage{
+  font-color:#69F0AE;
+  padding:5px;
 }

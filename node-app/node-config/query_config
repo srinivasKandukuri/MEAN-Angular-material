@@ -1,0 +1,9 @@
+{
+  "userInfo": {
+    "queries": [
+      {
+        "query": "SELECT * from userDetails"
+      }
+    ]
+  }
+}

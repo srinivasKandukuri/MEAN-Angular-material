@@ -23,13 +23,14 @@
    <script src="//cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
 
     <!-- Controllers -->
-    <script type="text/javascript" src="/angular-app/controllers/loginCtrl.js"></script>
+    <script type="text/javascript" src="/angular-app/controllers/userCtrl.js"></script>
      <script type="text/javascript" src="/angular-app/controllers/uiCtrl.js"></script>
     <script type="text/javascript" src="/angular-app/angular-app-routes.js"></script>
     <script type="text/javascript" src="/angular-app/angular-app.js"></script>
 
     <!--services-->
-     <script type="text/javascript" src="/angular-app/services/loginServices.js"></script>
+     <script type="text/javascript" src="/angular-app/services/userServices.js"></script>
+     <script type="text/javascript" src="/angular-app/services/ajaxServices.js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -64,6 +65,7 @@
        
   </head>
   <body>
+  <!-- <body ng-controller="mainCtrl" ng-style="bgImage"> -->
 
 
          <ng-view></ng-view>

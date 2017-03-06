@@ -1,9 +1,10 @@
 angular.module('NodeApp', 
 	[
+		'ngMdIcons',
 		'appRoutes',
 		'uiCtrl',
-		'mainCtrl',
-	 	'loginServices',
-	 	'ngMdIcons'
+		'userCtrl',
+	 	'userServices',
+	 	'ajaxServices'
 	]
 );
