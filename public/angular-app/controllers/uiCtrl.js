@@ -1,20 +1,53 @@
 angular.module('uiCtrl', ['ngMaterial'])
 
+.config(function($mdThemingProvider) {
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('purple', {
+      'default': '400', // by default use shade 400 from the pink palette for primary intentions
+      'hue-1': '100', // use shade 100 for the <code>md-hue-1</code> class
+      'hue-2': '600', // use shade 600 for the <code>md-hue-2</code> class
+      'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
+    })
+
+ $mdThemingProvider.theme('custom')
+          .primaryPalette('grey')
+          .accentPalette('deep-purple')
+          .warnPalette('red')
+          .backgroundPalette('grey');
+
+  $mdThemingProvider.theme('custom2')
+          .primaryPalette('blue')
+          .accentPalette('teal')
+          .warnPalette('red')
+          .backgroundPalette('grey');      
+
+/*
+    //$mdThemingProvider.setDefaultTheme('custom');
+$mdThemingProvider.alwaysWatchTheme(true);*/
+})
+
+
 .controller('uiToolbarCtrl',function($scope, $mdSidenav, $mdDialog, $rootScope, $location, Auth){
 
     $scope.jsShowUserInfo = false;
-
-	  $scope.openLeftMenu = function() {
-               $mdSidenav('left').toggle();
-    };
+    $scope.jsshowSideNav = false;
+    $scope.jsshowloginbuttons=true;
 
     if($rootScope.user != undefined){
       $scope.jsShowUserInfo = true;
       $scope.user = $rootScope.user;
-    }
-    else{
+      $scope.jsshowSideNav = true;
+      $scope.jsshowloginbuttons = false;
+    }else{
       $scope.jsShowUserInfo = false;
+      $scope.jsshowSideNav = false;
+      $scope.jsshowloginbuttons= true;
     }
+
+    $scope.openLeftMenu = function() {
+        $mdSidenav('left').toggle();
+    };
 
     $scope.logoutUser = function($rootScope){
         var promise = Auth.logout();
@@ -24,23 +57,34 @@ angular.module('uiCtrl', ['ngMaterial'])
     }
 
 
-
    $scope.menu = [
-    {
+   {
       link : '',
-      title: 'Dashboard',
-      icon: 'dashboard'
+      title: 'Home',
+      icon: 'home'
     },
     {
-      link : '',
-      title: 'Friends',
-      icon: 'group'
+      link : '/#!/addUniversity',
+      title: 'Add Universities',
+      icon: 'group_add'
+    },
+    {
+      link : '/#!/universities',
+      title: 'Search Universities',
+      icon: 'location_city'
+    },
+    {
+      link : '/#!/countries',
+      title: 'Countries',
+      icon: 'public'
     }
   ];
+
+
   $scope.admin = [
     {
-      link : '',
-      title: 'Trash',
+      link : '/#!/logout',
+      title: 'Logout',
       icon: 'delete'
     },
     {
@@ -55,10 +99,6 @@ angular.module('uiCtrl', ['ngMaterial'])
       originatorEv = ev;
       $mdMenu.open(ev);
     };
-  
-
-
-
 
 })
 

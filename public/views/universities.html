@@ -1,0 +1,37 @@
+<div ng-include="'/views/includes/toolbar.html'"></div>
+<div class="content">
+	<md-content ng-controller="universitiesCtrl" layout-padding class="md-padding" layout-align="center" layout="column">
+	<div class="container" flex="75" layout="row" layout-align="center">
+		<md-card  flex="75">
+		<md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">University Domains and Names Data</span>
+                </md-card-title-text>
+            </md-card-title>
+		<md-card-content>
+                <md-input-container class="md-block" md-no-float> 
+                    <input type="search" placeholder="Enter your University name / Ex: Oxford, Ankara"> 
+                </md-input-container>
+                <md-card-actions layout="row" layout-align="center">
+                <center>
+                    <md-button class="md-primary md-raised signup_button" type="submit">Search</md-button>
+                </center>
+            </md-card-actions>
+		</md-card-content>
+		</md-card>
+	</div>
+	<div flex="75" layout="row" layout-align="center">
+	<md-card  flex="75">
+		
+		<md-card-content>
+               <span>No Universities found please add yours</span>
+                <md-card-actions layout="row" layout-align="center">
+            
+                    <a md-button class="md-raised" href="/#!/addUniversity">Add University</a>
+               
+            </md-card-actions>
+		</md-card-content>
+		</md-card>
+		</div>
+	</md-content>
+</div>

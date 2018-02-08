@@ -1,35 +1,33 @@
-<div ng-controller="uiToolbarCtrl">
-<md-toolbar class='md-whiteframe-5dp'>
-          <div class="md-toolbar-tools">
+<div ng-controller="uiToolbarCtrl" >
+<md-toolbar class="md-whiteframe-5dp " style="position:fixed; min-height:30px" md-theme="{{theme}}" md-theme-watch="true">
+          <div class="md-toolbar-tools fixedHeader">
           
-            <md-button class="md-icon-button" aria-label="Settings" ng-click="openLeftMenu()">
+            <input type="hidden" ng-model="jsshowSideNav" >          
+            <md-button ng-if="jsshowSideNav" class="md-icon-button " aria-label="Settings" ng-click="openLeftMenu()">
               <md-icon md-svg-icon="images/icons/ic_menu_white_48px.svg"></md-icon>
             </md-button>
-
-            <h2 flex="" md-truncate="">Node App</h2>
-            <md-menu md-position-mode="target-right target" >
-              
-              <md-button class="md-icon-button" aria-label="More" ng-click="$mdMenu.open($event)">
-                <md-icon md-svg-icon="images/icons/ic_more_vert_white_48px.svg"></md-icon>
-              </md-button>
-              <md-menu-content width="2" >
-            <md-menu-item>
-              <md-button ng-click="logoutUser()">
-                  <div layout="row" flex>
-                    <p flex>LogOut</p>
-                           </div>
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-            </md-menu>
+            
+            <div class="valign-center">                
+                <ng-md-icon style="fill: white" size="44" icon="school"></ng-md-icon>
+                <span class="title"> Learning outcomes and Assessments Tracker</span>
+            </div>
+             
+            <!-- <md-menu md-position-mode="target-right target" ng-if="jsShowLogOutButton"> -->
+             <span flex></span>
+             <input type="hidden" value="jsshowloginbuttons">
+             <div ng-if="jsshowloginbuttons">
+                <a href="/#!/login"><md-button class="md-raised"> Sigin </md-button></a>
+                <a href="/#!/signup"><md-button class="md-raised"> Signup </md-button></a>
+            </div>
           </div>
 
 </md-toolbar>
 
-<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4" layout="column">
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="4" layout="column"  style="position:fixed">
 
   <md-toolbar class="md-theme-indigo">
-        <h1 class="md-toolbar-tools">Node App</h1>
+        <h1 class="md-toolbar-tools fixedHeader">  
+        <ng-md-icon style="fill: white" size="36" icon="school"></ng-md-icon>  LOAT</h1>
   </md-toolbar>
   <input type="hidden" ng-model="jsShowUserInfo" >
   <md-toolbar class="md-tall" ng-if="jsShowUserInfo">
@@ -39,34 +37,30 @@
             <user-avatar></user-avatar>
           </div>
           <div flex="20" class="userProfile">
-          {{user.name}}
-          <span></span>
-          {{user.email}}
+          {{user.name.firstName}}
           </div>
          
         </div>
   </md-toolbar>
   <md-list>
  <md-item ng-repeat="item in menu">
-        <a>
-          <md-item-content md-ink-ripple layout="row" layout-align="start center">
+        <a md-button md-ink-ripple layout="row" layout-align="start center" href="{{item.link}}">
             <div class="inset">
               <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
             </div>
-            <div class="inset">{{item.title}}
-            </div>
-          </md-item-content>
+            <div class="inset menu-title">{{item.title}}
+            </div>  
         </a>
-      </md-item>
+</md-item>
        <md-divider></md-divider>
        <md-subheader>Management</md-subheader>
       <md-item ng-repeat="item in admin">
-        <a>
+        <a href="{{item.link}}">
           <md-item-content md-ink-ripple layout="row" layout-align="start center">
             <div class="inset">
               <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
             </div>
-            <div class="inset">{{item.title}}
+            <div class="inset menu-title">{{item.title}}
             </div>
           </md-item-content>
         </a>

@@ -1,12 +1,11 @@
 angular.module('userServices', [])
 
-.factory('Auth', function($http, $q, $window, Ajax) {
+.factory('Auth', function($http, $q, $window, $rootScope, $location, Ajax) {
 
 	var authFactory = {};
 	var data = null;
 
-	authFactory.login = function(username, password) {
-		data = {email:username, password:password}
+	authFactory.login = function(data) {
 		return this.call('LOGIN', data);
 	}
 
@@ -20,6 +19,12 @@ angular.module('userServices', [])
 
 	authFactory.call = function(service,data){
 		return Ajax.makeCall(service, data);
+	}
+
+	authFactory.checkUserLoggedIn = function(){
+			if($rootScope.user != undefined){
+				$location.url("/");
+			}
 	}
 	
 	return authFactory;

@@ -1,30 +1,36 @@
  <div ng-include="'/views/includes/toolbar.html'"></div>
  
-  <md-content ng-controller="loginCtrl" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
-      <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
-        <md-toolbar>
+  <md-content ng-controller="loginCtrl" layout="row" layout-align="space-around" ng-cloak="ng-cloak" class="login-form">
+      <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33" class="container">
+        <md-toolbar class="toolbarHeader">
           <div class="md-toolbar-tools">
             <h2><span>Login Form</span></h2>
           </div>
         </md-toolbar>
         <md-card-content>
-          <form name="Form">
-            <md-input-container class="md-block">
-              
-              <input type="text" name="email" ng-model="email" placeholder="email" required=""/>
-              <div ng-messages="Form.email.$error" role="alert" multiple="">
-                <div ng-message="required" class="my-message">Please enter your email.</div>
+          <form name="loginForm">
+           
+             <md-input-container class="md-block">
+              <label>Email</label>
+              <input type="email" name="email" ng-model="userInfo.email"
+                     required ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/">
+             <div  ng-messages="loginForm.email.$error">
+                    <div ng-message="required">Email is required.</div>
+                    <div ng-message="pattern">Email Is Invalid</div>
               </div>
             </md-input-container>
-            <md-input-container class="md-block">
-             
-              <input type="password" name="password" ng-model="pass" placeholder="password" required="" md-maxlength="16"/>
-              <div ng-messages="Form.password.$error" role="alert" multiple="">
-                <div ng-message="required" class="my-message">Please enter your password.</div>
-                
+
+          <md-input-container class="md-block">
+             <label>Password</label>
+              <input type="password" name="password" ng-model="userInfo.password" password" required maxlength="16" minlength="6" />
+              <div ng-messages="loginForm.password.$error" role="alert">
+                <div ng-message-exp="['required', 'minlength', 'maxlength']">
+                  Your password must be between 6 and 16 characters .
+                </div>
               </div>
             </md-input-container>
-            <md-button ng-disabled="!Form.$valid" ng-click="submit(Form)" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
+
+            <md-button ng-disabled="!loginForm.$valid" ng-click="submit()" class="md-raised md-primary">&nbsp Login &nbsp</md-button>
           </form>
         </md-card-content>
       </md-card>

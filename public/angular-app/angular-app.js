@@ -1,6 +1,7 @@
 angular.module('NodeApp', 
 	[
 		'ngMdIcons',
+		'ngMessages',
 		'appRoutes',
 		'uiCtrl',
 		'userCtrl',

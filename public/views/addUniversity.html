@@ -1,0 +1,81 @@
+<div ng-include="'/views/includes/toolbar.html'"></div>
+<div class="content">
+  <md-content ng-controller="universitiesCtrl" layout-padding class="md-padding" layout-align="center" layout="column">
+  <div class="container" flex="75" layout="row" layout-align="center">
+    <md-card  flex="75">
+    <md-card-title>
+            <md-card-title-text>
+                    <span class="md-headline">Add a New University entry</span>
+                </md-card-title-text>
+            </md-card-title>
+    <md-card-content>
+            
+      <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>University Name</label>
+            <input ng-model="user.firstName">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>University Code (E.g. CRICOS)</label>
+            <input ng-model="theMax">
+          </md-input-container>
+      </div>
+       <div layout-gt-sm="row">
+       <md-input-container class="md-block" flex-gt-sm>
+        <label>Campus Name</label>
+        <input  md-no-asterisk name="description" ng-model="project.description">
+      </md-input-container>
+       <md-input-container class="md" flex-gt-sm>
+            <label>Country</label>
+            <input ng-model="user.city">
+          </md-input-container>
+
+      </div>
+       <md-input-container class="md-block">
+        <label>Address (Street/Road/Lane name)</label>
+        <input  md-no-asterisk name="description" ng-model="project.description">
+      </md-input-container>
+
+
+      
+      <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>City</label>
+            <input ng-model="user.city">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>State</label>
+           <input ng-model="user.city">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Postal Code</label>
+            <input name="postalCode" ng-model="user.postalCode" placeholder="12345"
+                   required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+
+            <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+              <div ng-message="required" class="my-message">You must supply a postal code.</div>
+              <div ng-message="pattern" class="my-message">That doesn't look like a valid postal
+                code.
+              </div>
+              <div ng-message="md-maxlength" class="my-message">
+                Don't use the long version silly...we don't need to be that specific...
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+
+
+                <md-card-actions layout="row" layout-align="center">
+                <center>
+                    <md-button class="md-primary md-raised signup_button" type="submit"> Create</md-button>
+                </center>
+            </md-card-actions>
+    </md-card-content>
+    </md-card>
+  </div>
+  
+  </md-content>
+</div>

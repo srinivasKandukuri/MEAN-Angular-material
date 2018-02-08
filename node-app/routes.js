@@ -1,74 +1,23 @@
-// sample api route
-var db = require('../config/db');
 var userController = require('./controllers/userController');
 
 
+module.exports = function(app) {
 
-module.exports = function(app, api, passport) {
-
-
-
-    api.get('/', function(req, res){
-        res.render('index', { title: 'Node-app' });
-    });
-    
-    api.get('/api/users', userController.getUserDetails);
-
-    api.get('/api/signup', function(req, res){
-
+    app.get('/', function(req, res){
+        res.render('index', { title: 'LOAT' });
     });
 
-    api.get('/api/logout', function(req,res){
-        req.session.destroy(function (err) {
-          return res.json(200, {
-                    message: "logged out user"
-          });
-        });
-    });
-    
-    app.post('/api/login',function handleLocalAuthentication(req, res, next){
+    // Sample API calls==============================================
+    app.post('/api/login', userController.login);
+    app.get('/api/users', userController.getAllUserDetails);
+    app.get('/api/users/:email_id', userController.getUserDetails);
 
-        console.log(req.session.passport.user);
-        passport.authenticate('local-login',function(err, user, info) {
-            if (err) return next(err);
-            if (!user) {
-                return res.json(200, {
-                    message: "no user found"
-                });
-            }
-            // Manually establish the session...
-            req.login(user, function(err) {
-                if (err) return next(err);
-                return res.json({
-                    message: 'user authenticated',
-                });
-            });
-        })(req, res, next);
-    });
 
-    app.get('/loggedin', function(req,res){
-         sendUserInfromation(req, res);
-    })
+    app.post('/api/signup', userController.signUp);
+
+
+
+
+    // Internal Calls==================================================
+    app.get('/loggedin', userController.checkIsUserLogged);
 };
-
-
-// route middleware to make sure
-function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}
-
-
-var sendUserInfromation = function(req, res) {
-      if ( req.isAuthenticated() ) {
-          res.send(req.user);
-      }
-      else {
-          res.send('0');
-      }
-  }

@@ -1,17 +1,22 @@
  <div ng-include="'/views/includes/toolbar.html'"></div>
  
-  <md-content ng-controller="signupCtrl" layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak" class="login-form">
-      <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+  <md-content ng-controller="signupCtrl" layout="row" layout-align="space-around"  ng-cloak="ng-cloak" class="login-form">
 
-        <p class="successMessage">{{message}}</p>
-        <md-toolbar>
+    <!--   <div flex="66" flex-gt-sm="50" flex-gt-md="66" show-gt-md hide-gt-xs hide-xs  class=" container sample">
+        
+      </div>  -->
+      <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33" class="container userForm">
+           <md-toolbar class="toolbarHeader">
           <div class="md-toolbar-tools">
-            <h2><span>Registration Form</span></h2>
-          </div>
+            <h2><span>Registration</span></h2>
+          </div>  
         </md-toolbar>
-        <md-card-content>
-          <form name="regForm">
 
+
+
+
+        <md-card-content>
+          <form name="regForm" novalidate>
              <md-input-container flex="50">
               <label>First Name</label>
               <input required name="firstName" ng-model="userInfo.firstName">
@@ -19,7 +24,8 @@
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
-               <md-input-container flex="50">
+      
+            <md-input-container flex="50">
               <label>Last Name</label>
               <input required name="lastName" ng-model="userInfo.lastName">
               <div ng-messages="regForm.lastName.$error">
@@ -27,15 +33,24 @@
               </div>
             </md-input-container>
 
+
+
+            <md-input-container class="md-block">
+              <label>Phone Number</label>
+              <input required name="phoneNumber" ng-model="userInfo.phoneNumber" ng-pattern="/^\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})$/">
+              <div ng-messages="regForm.phoneNumber.$error">
+                <div ng-message="required">This is required.</div>
+                <div ng-message="pattern">Phone number Is Invalid(10 digit length)</div>
+              </div>
+            </md-input-container>
+
             <md-input-container class="md-block">
               <label>Email</label>
-              <input required type="email" name="userEmail" ng-model="userInfo.userEmail"
-                     minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/" />
-
-              <div ng-messages="regForm.userEmail.$error" role="alert">
-                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                  Your email must be between 5 and 100 characters long and look like an e-mail address.
-                </div>
+              <input type="email" name="email" ng-model="userInfo.email"
+                     required ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/">
+             <div  ng-messages="regForm.email.$error">
+                    <div ng-message="required">Email is required.</div>
+                    <div ng-message="pattern">Email Is Invalid</div>
               </div>
             </md-input-container>
 
@@ -51,7 +66,17 @@
               </div>
             </md-input-container>
 
-            <md-button ng-disabled="!regForm.$valid" ng-click="submit(regForm)" class="md-raised md-primary">&nbsp SignUp &nbsp</md-button>
+            <md-input-container class="md-block">
+              <label>User Type</label>
+              <md-select name="userType" ng-model="userInfo.userType" required>
+                <md-option value="Teacher">Teacher</md-option>
+                <md-option value="Student">Student</md-option>
+              </md-select>
+               <div ng-messages="regForm.userType.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <md-button ng-disabled="!regForm.$valid" ng-click="submit()" class="md-raised md-primary">&nbsp SignUp &nbsp</md-button>
           </form>
         </md-card-content>
       </md-card>

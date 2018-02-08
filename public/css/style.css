@@ -1,73 +1,95 @@
-html, body {
- /*background: rgba(206, 206, 206, 0.14);*/
-  color: #fff;
-  font-family: sans-serif;
+html,
+body{
+    margin-top:0;
+    padding-top:0;
+    height: 100%;
+  /*  background: url('../images/bg.jpg') no-repeat center center fixed;*/
+      background: rgb(250,250,250);
+     -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.login-form {
-  md-card {
-    padding: 0!important;
-
-    md-card-title {
-      background-color: blue;
-    }
-  }
+.title{
+  font-size: 15px;
+  padding:0 0 0 10px;
+}
+.userForm{
+   /*background: rgb(250,250,250);*/
 }
 
-$gray: #eee;
 
-md-content.md-default-theme {
-  /*background-color: $gray;*/
+md-toolbar .fixedHeader{
+  min-height: 30px;
+  height: 50px
 }
 
-md-content.md-default-theme, md-content {
-  background: transparent;
+.toolbarHeader{
+  min-height: 30px;
+  height: 50px;
+  
 }
-md-card {
-  background-color: #fff;
-  h2:first-of-type {
-    margin-top: 0;
-  }
+.toolbarHeader span{
+  font-size: 15px;
 }
-md-toolbar {
-  .md-button.md-default-theme {
-    border-radius: 99%; // round toolbar buttons
-  }
+
+.md-button {
+  padding: 0 4px 0 4px;
+  margin: 6px 8px 6px 8px;
+  min-width: 80px;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration:none;
+  border: none;
+  outline: none;
 }
-h2 {
-  font-weight: 400;
+
+md-sidenav{
+  background: #fff;
+  color:rgba(64, 54, 54, 0.67);
 }
-.md-toolbar-tools-bottom {
-  font-size: small;
-  & :last-child {
-    opacity: 0.8;
-  }
+md-sidenav a .menu-title {
+  font-weight:bold;
 }
-md-toolbar:not(.md-hue-1),
-.md-fab {
-  fill: #fff;
-}
-md-sidenav {
-  fill: #737373;
-  ng-md-icon {
+md-sidenav ng-md-icon {
     position: relative;
     top: 5px; // adjust for svg viewbox
-  }
+    color:#ccc;
+}
+md-content{
+  background: transparent;
+}
+
+md-sidenav, md-backdrop {
+position: fixed !important;
+}
+.container{
+  margin-top:100px;
 }
 .user-avatar {
   border-radius: 99%;
 }
-.avatar{
-
-}
-
 .userProfile{
   text-align:center;
   padding:15px;
   font-size: 15px;
 }
-
 .successMessage{
   font-color:#69F0AE;
   padding:5px;
+}
+.content-section{
+  margin-top: 100px;
+}
+.valign-center {
+  display: inline-flex;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.sample{
+  border: 1px solid #ccc;
 }
